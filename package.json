@@ -1,0 +1,31 @@
+{
+  "name": "impinj-reader-rest-client",
+  "version": "0.1.0",
+  "description": "This package provides classes and utils for interacting with Impinj readers that expose  the Impinj RESTful Interface. All REST API endpoints are supported and data streaming has been implemented to follow the official Impinj guidelines.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rledford/impinj-reader-rest-client.git"
+  },
+  "keywords": [
+    "impinj",
+    "reader",
+    "rest",
+    "client",
+    "stream",
+    "event",
+    "rfid"
+  ],
+  "author": "Ryan Ledford (rledford)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rledford/impinj-reader-rest-client/issues"
+  },
+  "homepage": "https://github.com/rledford/impinj-reader-rest-client#readme",
+  "devDependencies": {
+    "@types/node": "14.6.0"
+  }
+}

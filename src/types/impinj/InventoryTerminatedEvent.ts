@@ -1,0 +1,1 @@
+export type v1 = {};
