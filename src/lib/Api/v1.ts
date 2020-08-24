@@ -1,9 +1,9 @@
 import HttpMethod from '../../enums/HttpMethod';
 import * as HttpRequest from '../HttpRequest';
 import ImpinjReaderRestClient from '../ImpinjReaderRestClient';
-import IApiV1 from '../../interfaces/IApiV1';
+import v1 from '../../interfaces/api/v1';
 
-export default function (client: ImpinjReaderRestClient): IApiV1 {
+export default function (client: ImpinjReaderRestClient): v1 {
   return {
     getStatus() {
       return HttpRequest.send({

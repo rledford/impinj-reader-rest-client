@@ -1,6 +1,6 @@
 import ImpinjReaderRestClientOptions from '../types/ImpinjReaderResetClientOptions';
-import ApiV1 from '../interfaces/IApiV1';
-import * as Api from './Api';
+import v1 from '../interfaces/api/v1';
+import * as Api from './api';
 
 export default class ImpinjReaderRestClient {
   secure: boolean = false;
@@ -10,7 +10,7 @@ export default class ImpinjReaderRestClient {
   password: string = '******';
   timeout: number = 5000;
   api: {
-    v1: ApiV1;
+    v1: v1;
   };
 
   constructor(options: ImpinjReaderRestClientOptions) {

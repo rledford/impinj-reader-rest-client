@@ -3,9 +3,16 @@ import https from 'https';
 
 import HttpRequestOptions from '../types/HttpRequestOptions';
 import HttpMethod from '../enums/HttpMethod';
+import HttpRequestError from './HttpRequestError';
 
-export function send(options: HttpRequestOptions) {
-  return new Promise((resolve, reject) => {
+const ALLOWED_PAYLOAD_METHODS = [
+  HttpMethod.put,
+  HttpMethod.patch,
+  HttpMethod.post
+];
+
+export function send<T>(options: HttpRequestOptions): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
     let method = options.method || HttpMethod.get;
 
     const request = options.secure ? https.request : http.request;
@@ -23,20 +30,21 @@ export function send(options: HttpRequestOptions) {
         if (options.json) {
           try {
             data = JSON.parse(body.join(''));
-          } catch (err) {
-            data = body.join('');
-          }
+          } catch (unused) {}
         }
         if (res.statusCode && (res.statusCode < 200 || res.statusCode > 399)) {
-          return reject({
-            response: {
-              status: res.statusCode,
-              data
-            }
-          });
+          reject(
+            new HttpRequestError({
+              message: `Server responded with status code ${res.statusCode}`,
+              response: {
+                status: res.statusCode,
+                data: data
+              }
+            })
+          );
+        } else {
+          resolve(data);
         }
-
-        return resolve(data);
       });
     });
 
@@ -49,12 +57,11 @@ export function send(options: HttpRequestOptions) {
     });
 
     req.on('error', err => {
-      reject(err);
+      console.log(err);
+      reject(new HttpRequestError(err));
     });
 
-    if (
-      [HttpMethod.put, HttpMethod.patch, HttpMethod.post].indexOf(method) >= 0
-    ) {
+    if (ALLOWED_PAYLOAD_METHODS.indexOf(method) >= 0) {
       let payload = '';
       if (options.payload) {
         if (options.json) {

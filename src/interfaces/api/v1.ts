@@ -1,13 +1,17 @@
-export default interface IApiV1 {
+import * as ReaderStatus from '../../types/impinj/ReaderStatus';
+import * as MqttConfig from '../../types/impinj/MqttConfig';
+import * as InventoryPreset from '../../types/impinj/InventoryPreset';
+
+export default interface v1 {
   /**
    * Gets the reader's status
    */
-  getStatus: () => Promise<any>;
+  getStatus: () => Promise<ReaderStatus.v1>;
 
   /**
    * Gets the reader's MQTT settings
    */
-  getMqtt: () => Promise<any>;
+  getMqtt: () => Promise<MqttConfig.v1>;
 
   /**
    * Updates the reader's MQTT settings with the provided payload
@@ -18,7 +22,7 @@ export default interface IApiV1 {
   /**
    * Gets a list of readers supported profiles (e.g. inventory, location, direction)
    */
-  getSupportedProfiles: () => Promise<any>;
+  getSupportedProfiles: () => Promise<string[]>;
 
   /**
    * Gets the reader-specific JSON schema used to validate inventory presets
@@ -28,13 +32,13 @@ export default interface IApiV1 {
   /**
    * Gets available inventory presets
    */
-  getInventoryPresets: () => Promise<any>;
+  getInventoryPresets: () => Promise<string[]>;
 
   /**
    * Gets the inventory preset with id {presetId}
    * @param id presetId
    */
-  getInventoryPresetById: (id: string) => Promise<any>;
+  getInventoryPresetById: (id: string) => Promise<InventoryPreset.v1>;
 
   /**
    * Updates the inventory preset with id {presetId} with the provided payload
