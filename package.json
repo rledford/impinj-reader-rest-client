@@ -1,6 +1,6 @@
 {
   "name": "impinj-reader-rest-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This package provides classes and utils for interacting with Impinj readers that expose  the Impinj RESTful Interface. All REST API endpoints are supported and data streaming has been implemented to follow the official Impinj guidelines.",
   "main": "src/index.js",
   "scripts": {
