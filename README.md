@@ -6,6 +6,7 @@
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [API v1](#api-v1)
+- [To Do](#to-do)
 
 ## Installation
 
@@ -67,3 +68,7 @@ This package includes all data types used throughout the client so most IDEs sho
 | deleteInventoryPresetById | id: **String**                      | Deletes the inventory preset by ID                             |
 | startInventoryPresetById  | id: **String**                      | Starts the reader with the inventory preset by ID              |
 | stopInventoryPreset       |                                     | Stops the currently running profile preset                     |
+
+## To Do
+
+- Add API v1 data stream capability
