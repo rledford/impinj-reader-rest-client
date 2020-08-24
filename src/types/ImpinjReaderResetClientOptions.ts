@@ -6,7 +6,7 @@ type ImpinjReaderRestClientOptions = {
   port?: number;
   username?: string;
   password?: string;
-  timeoute?: number;
+  timeout?: number;
 };
 
 export default ImpinjReaderRestClientOptions;
