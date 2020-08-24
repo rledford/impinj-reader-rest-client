@@ -57,7 +57,6 @@ export function send<T>(options: HttpRequestOptions): Promise<T> {
     });
 
     req.on('error', err => {
-      console.log(err);
       reject(new HttpRequestError(err));
     });
 
