@@ -89,7 +89,7 @@ export default function (client: ImpinjReaderRestClient): v1 {
       });
     },
 
-    startInventoryPreset(id: string) {
+    startInventoryPresetById(id: string) {
       return HttpRequest.send({
         ...client,
         method: HttpMethod.post,

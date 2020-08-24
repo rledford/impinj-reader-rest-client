@@ -57,7 +57,7 @@ export default interface v1 {
    * Starts the reader with the inventory preset with id {presetId}
    * @param id presetId
    */
-  startInventoryPreset: (id: string) => Promise<any>;
+  startInventoryPresetById: (id: string) => Promise<any>;
 
   /**
    * Stops the currently running profile preset
