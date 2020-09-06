@@ -31,6 +31,8 @@ export function send<T>(options: HttpRequestOptions): Promise<T> {
           try {
             data = JSON.parse(body.join(''));
           } catch (unused) {}
+        } else {
+          data = body.join('');
         }
         if (res.statusCode && (res.statusCode < 200 || res.statusCode > 399)) {
           reject(
